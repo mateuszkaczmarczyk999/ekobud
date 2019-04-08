@@ -14,10 +14,6 @@ export default {
   name: 'App',
   components: {
     MenuBar, FooterInfo
-  },
-  mounted () {
-    console.log(MenuBar)
-    console.log(FooterInfo)
   }
 }
 </script>
