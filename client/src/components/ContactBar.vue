@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import contactbg from '.././assets/contact-bg.jpg'
+import contactBg from '.././assets/contact-bg.jpg'
 export default {
   data () {
     return {
-      imgSrc: contactbg
+      imgSrc: contactBg
     }
   }
 }
@@ -36,7 +36,16 @@ export default {
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
   }
+  h1 {
+    font-weight: 600;
+    font-size: 4vw;
+    margin-bottom: 1%;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+  }
   h4 {
-    font-weight: 400;
+    font-size: 2vw;
+    font-weight: 600;
+    margin-bottom: 1%;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
   }
 </style>

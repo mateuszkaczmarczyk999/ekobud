@@ -1,14 +1,14 @@
 <template>
   <div id="offers">
     <Title name="Lista ofert"/>
-    <OfferCards :offers="offers"/>
+    <OfferCard :key="offer.id" :offer="offer" v-for="offer in offers"/>
   </div>
 </template>
 
 <script>
-import OfferCards from '../components/OfferCards'
+import OfferCard from '../components/OfferCard'
 import Title from '../components/Title'
-import tmpImg from '.././assets/about.jpg'
+import tmpImg1 from '.././assets/tmp0.jpg'
 
 export default {
   name: 'Offers',
@@ -17,30 +17,36 @@ export default {
       offers: [
         { id: 1,
           title: '"Osielde przy Cichej"',
-          imgFile: tmpImg,
+          term: 'Termin realizacji: IV kwartał 2019',
+          imgFile: tmpImg1,
           imgSize: '500',
           btn: 'Szczegóły',
-          msg: 'Lorem Ipsum jest tekstem wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker'
+          msg: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
+             'w miejscowosci Łazy, sąsiadującej z legendarną Magdalenką.'
         },
         { id: 2,
           title: '"Osielde przy Cichej"',
-          imgFile: tmpImg,
+          term: 'Termin realizacji: IV kwartał 2019',
+          imgFile: tmpImg1,
           imgSize: '500',
           btn: 'Szczegóły',
-          msg: 'Lorem Ipsum jest tekstem wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker'
+          msg: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
+             'w miejscowosci Łazy, sąsiadującej z legendarną Magdalenką.'
         },
         { id: 3,
           title: '"Osielde przy Cichej"',
-          imgFile: tmpImg,
+          term: 'Termin realizacji: IV kwartał 2019',
+          imgFile: tmpImg1,
           imgSize: '500',
           btn: 'Szczegóły',
-          msg: 'Lorem Ipsum jest tekstem wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker'
+          msg: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
+             'w miejscowosci Łazy, sąsiadującej z legendarną Magdalenką.'
         }
       ]
     }
   },
   components: {
-    OfferCards, Title
+    OfferCard, Title
   }
 }
 </script>

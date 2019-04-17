@@ -17,22 +17,25 @@ export default {
 
 <style scoped>
   .title-container {
+    font-size: 16px;
     color:#33302a;
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 2.5%;
+    margin-top: 5%;
+    margin-bottom: 2%;
   }
   h1 {
     font-weight: 400;
+    font-size: 1.8em;
     margin-bottom: 1%;
   }
   .underline {
     border-top: 1px solid;
   }
   p {
-    font-size: 1.4em;
-    font-weight: 400;
+    font-weight: 300;
+    font-size: 1.2em;
     margin-bottom: 1%;
   }
 </style>

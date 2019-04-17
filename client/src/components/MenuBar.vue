@@ -49,7 +49,7 @@ export default {
       this.isInvert = to.name === 'Main' || to.name === 'Details'
     },
     windWidth () {
-      this.isSmall = this.windWidth < 992
+      this.isSmall = false
     }
   },
   computed: {
@@ -85,7 +85,7 @@ export default {
     font-size: 1.3em;
   }
   .menu-item:hover {
-    font-weight: bolder;
+    text-shadow: 2px 2px 20px rgba(125, 125, 125, 0.5);
     text-decoration: none;
   }
 </style>

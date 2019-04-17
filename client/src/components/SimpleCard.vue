@@ -1,15 +1,7 @@
 <template>
   <div class="content-container">
-    <b-container class="info-container">
-      <b-row>
-        <b-col cols="12" lg="6">
-          <b-img :src="imgSource" fluid></b-img>
-        </b-col>
-        <b-col>
-          <p>{{ text }}</p>
-        </b-col>
-      </b-row>
-    </b-container>
+    <b-img :src="imgSource" width="400" fluid class="text-wrap"></b-img>
+    <p>{{ text }}</p>
   </div>
 </template>
 
@@ -27,15 +19,23 @@ export default {
 <style scoped>
   .content-container {
     overflow: auto;
-    margin-top: 5%;
+    font-size: 16px;
     margin-bottom: 5%;
     margin-left: 10%;
     margin-right: 10%;
   }
+  .text-wrap {
+    float: left;
+    margin-right: 5%;
+    margin-bottom: 4%;
+  }
   p {
-    font-size: 1.2em;
-    font-weight: 400;
-    margin-bottom: 1%;
-    text-align: left;
+    font-size: 1em;
+    font-weight: 200;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 1%;
+    text-align: justify;
+    text-justify: inter-word;
   }
 </style>
