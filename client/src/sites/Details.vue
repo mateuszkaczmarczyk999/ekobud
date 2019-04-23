@@ -27,9 +27,11 @@ import OfferList from '../components/OfferList'
 import Technology from '../components/Technology'
 import OfferFeatures from '../components/OfferFeatures'
 import VisualizationGallery from '../components/VisualizationGallery'
-import tmpImg1 from '.././assets/tmp0.jpg'
-import tmpImg2 from '.././assets/tmp1.jpg'
-import tmpImg3 from '.././assets/tmp2.jpg'
+import viz1 from '.././assets/viz1.jpg'
+import viz2 from '.././assets/viz2.jpg'
+import viz3 from '.././assets/viz3.jpg'
+import viz4 from '.././assets/viz4.jpg'
+import viz5 from '.././assets/viz5.jpg'
 import tmpImgA from '.././assets/A.jpg'
 import tmpImgB from '.././assets/B.jpg'
 import tmpImgC from '.././assets/C.jpg'
@@ -54,7 +56,7 @@ export default {
       offer: {
         id: 1,
         title: '"Osielde przy Cichej"',
-        imgSource: tmpImg1,
+        imgSource: viz1,
         imgSize: '300',
         realizationTerm: 'Termin realizacji: IV kwartał 2019',
         btn: 'Szczegóły',
@@ -72,7 +74,7 @@ export default {
         'Budynek C': [tmpImgC, pztC],
         'Budynek D': [tmpImgD, pztD]
       },
-      visualization: [tmpImg2, tmpImg3, tmpImg2, tmpImg3, tmpImg2],
+      visualization: [viz1, viz2, viz3, viz4, viz5],
       visualizationInt: [i1, i2, i3, i4, i5, i6]
     }
   },

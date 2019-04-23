@@ -7,7 +7,7 @@
             <b-col>
               <h1>Kontakt</h1>
               <hr class="contact-underline">
-              <h5>EKO-BUD INVESTMENT SP. Z O.O.</h5>
+              <h5>EKO-BUD Investment Sp.Z O.O. Sp.K.</h5>
               <p class="mb-1">NIP: 1231411749</p>
               <p class="mb-1">REGON: 381361518</p>
             </b-col>
@@ -21,7 +21,7 @@
             <b-col align-self="end" lg="8" sm="12" class="pb-5">
               <div class="mb-1">
                 <i class="fas fa-phone contact-icon contact-inline"></i>
-                <h5 class="contact-inline">501-501-501</h5>
+                <h5 class="contact-inline">+48 577 530 003</h5>
               </div>
               <div class="mb-1">
                 <i class="far fa-envelope contact-icon contact-inline"></i>

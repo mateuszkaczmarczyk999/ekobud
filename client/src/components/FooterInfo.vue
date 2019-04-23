@@ -18,12 +18,12 @@
           </b-col>
           <b-col sm="12" lg="3" class="contact-column">
             <h4>Kontakt</h4>
-            <p>EKO-BUD Investment Sp. z o.o.</p>
+            <p>EKO-BUD Investment Sp.Z O.O. Sp.K.</p>
             <p>ul. Cicha 4, 05-552 Łazy</p>
-            <p>tel. +48 501 025 014</p>
+            <p>tel. +48 577 530 003</p>
             <p>e-mail: kontakt@ekobud.org</p>
             <p>NIP: 1231411749</p>
-            <p>REGON: 380837150</p>
+            <p>REGON: 381361518</p>
           </b-col>
           <b-col sm="12" lg="2" class="contact-column">
             <h4>Social media</h4>

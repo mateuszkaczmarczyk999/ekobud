@@ -16,9 +16,9 @@ import MainButton from '../components/MainButton'
 import ContactBar from '../components/ContactBar'
 import SimpleCard from '../components/SimpleCard'
 import about from '.././assets/about.jpg'
-import tmpImg from '.././assets/tmp0.jpg'
-import tmpImg2 from '.././assets/tmp1.jpg'
-import tmpImg3 from '.././assets/tmp2.jpg'
+import viz1 from '.././assets/viz1.jpg'
+import viz2 from '.././assets/viz2.jpg'
+import viz3 from '.././assets/viz3.jpg'
 
 export default {
   name: 'Main',
@@ -38,14 +38,14 @@ export default {
       },
       mainOffer: { id: 1,
         title: '"Osielde przy Cichej"',
-        imgSource: tmpImg,
+        imgSource: viz1,
         btn: 'Szczegóły oferty',
         realizationTerm: 'Termin realizacji: IV kwartał 2019',
         text: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
               'w miejscowosci Łazy, sąsiadującej z legendarną Magdalenką.'
       },
-      visualization: [tmpImg3, tmpImg2],
-      imgFile: tmpImg,
+      visualization: [viz2, viz3],
+      imgFile: viz1,
       bImg: about,
       postText: 'Pomysłodawcą projektu są członkowie zarządu. Firma EKO-BUD INVESTMENT ' +
            'to inicjatywa rodzinna założona przez dwie współwłaścicielki, ' +

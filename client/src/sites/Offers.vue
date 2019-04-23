@@ -8,17 +8,18 @@
 <script>
 import OfferCard from '../components/OfferCard'
 import Title from '../components/Title'
-import tmpImg1 from '.././assets/tmp0.jpg'
+import viz1 from '.././assets/viz1.jpg'
 
 export default {
   name: 'Offers',
   data () {
     return {
+      newoffers: [],
       offers: [
         { id: 1,
           title: '"Osielde przy Cichej"',
           term: 'Termin realizacji: IV kwartał 2019',
-          imgFile: tmpImg1,
+          imgFile: viz1,
           imgSize: '500',
           btn: 'Szczegóły',
           msg: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
@@ -27,7 +28,7 @@ export default {
         { id: 2,
           title: '"Osielde przy Cichej"',
           term: 'Termin realizacji: IV kwartał 2019',
-          imgFile: tmpImg1,
+          imgFile: viz1,
           imgSize: '500',
           btn: 'Szczegóły',
           msg: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
@@ -36,7 +37,7 @@ export default {
         { id: 3,
           title: '"Osielde przy Cichej"',
           term: 'Termin realizacji: IV kwartał 2019',
-          imgFile: tmpImg1,
+          imgFile: viz1,
           imgSize: '500',
           btn: 'Szczegóły',
           msg: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
