@@ -4,7 +4,6 @@
     <h2>{{ post.subTitle }}</h2>
     <VisualizationGallery :images="post.imgFiles" v-if="anyImages"/>
     <b-embed v-if="post.movieUrl" class="pt-3 pb-5" type="iframe" aspect="16by9" :src="post.movieUrl" allowfullscreen></b-embed>
-    <p>{{ post.text }}</p>
     <p class="pt-5">{{ post.date }}</p>
   </div>
 </template>

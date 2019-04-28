@@ -26,8 +26,8 @@ export default {
     margin-bottom: 2%;
   }
   h1 {
-    font-weight: 400;
-    font-size: 1.8em;
+    font-weight: 900;
+    font-size: 2.4em;
     margin-bottom: 1%;
   }
   .underline {

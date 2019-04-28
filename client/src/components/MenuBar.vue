@@ -1,9 +1,9 @@
 <template>
   <header>
-    <b-navbar toggleable="lg" class="nav-container">
+    <b-navbar sticky toggleable="lg" class="nav-container" :type="toggleColor">
       <b-navbar-brand>
           <router-link to="/">
-            <b-img :src="logoSrc" left></b-img>
+            <b-img :src="logoSrc" :key="logoSrc" left></b-img>
           </router-link>
         </b-navbar-brand>
 
@@ -58,6 +58,9 @@ export default {
     },
     menuColor () {
       return this.isInvert && !this.isSmall ? { color: 'white' } : { color: 'black' }
+    },
+    toggleColor () {
+      return this.isInvert && !this.isSmall ? 'dark' : 'light'
     }
   },
   methods: {
@@ -73,9 +76,13 @@ export default {
     margin-left: 10%;
     margin-right: 10%;
   }
+  .toggle-color {
+    color: white;
+  }
   .nav-container {
     padding-left: 0;
     padding-right: 0;
+    z-index: 3;
   }
   .pt-4 {
     padding-top: 2rem !important;

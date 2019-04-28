@@ -2,15 +2,19 @@
   <div class="localization-container">
     <b-container fluid>
       <b-row>
-        <b-col lg="6" sm="12" class="pb-3 pt-3 pl-0 pr-0">
+        <b-col lg="6" sm="12" class="pb-3 pt-3 pl-0 pr-0" data-aos="fade-right">
           <div class="map-container">
-            <iframe height="720" width="100%" frameborder="0" style="border:0"
-              src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ2USz2NkwGUcRU5qjBqNN0wQ&key=AIzaSyDnqt2uVr6FrxXHP7kJavrTroOXKHkQVaY"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d610.3144745617689!2d20.871376421528264!3d52.07744834437591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471930da62028b3d%3A0x92a6e9443aa6802d!2sCicha+2%2C+05-552+%C5%81azy!5e0!3m2!1spl!2spl!4v1556471040482!5m2!1spl!2spl"
+              width="100%"
+              height="720"
+              frameborder="0"
+              style="border:0"
               allowfullscreen>
             </iframe>
           </div>
         </b-col>
-        <b-col align-self="center" lg="6" sm="12" class="pb-3 pt-3">
+        <b-col align-self="center" lg="6" sm="12" class="pb-3 pt-3" data-aos="fade-left">
           <div class="features-container">
             <b-container fluid>
               <b-row>
@@ -18,7 +22,7 @@
                   <div>
                     <i class="fas fa-graduation-cap feature-icon"></i>
                     <h5>Edukacja</h5>
-                    <p>W pobliżu liczne przedszkola i żłobki oraz Biblioteka Publiczna, Szkoła podstawowa publiczna, Szkoła podstawowa niepubliczna katolicka, Publiczne Katolickie Liceum Ogólnkształcące.</p>
+                    <p>W pobliżu liczne przedszkola i żłobki oraz Biblioteka Publiczna, Szkoła Podstawowa Publiczna, Szkoła Podstawowa Niepubliczna Katolicka, Publiczne Katolickie Liceum Ogólnokształcące.</p>
                   </div>
                 </b-col>
                 <b-col lg="6" sm="12" class="pb-3">
@@ -32,14 +36,14 @@
                   <div>
                     <i class="fas fa-shopping-basket feature-icon"></i>
                     <h5>Zakupy</h5>
-                    <p>Sklepy spożywcze Lewiatan, Żabka, Carrefour, apteka, poczta. 5 km do centrum handlowego Janki oraz do centrum konferecyjno-wystawienniczego-handlowego PTAK Nadarzyn, liczne restauracje, bary, centra konferencyjne.</p>
+                    <p>Sklepy spożywcze Lewiatan, Żabka, Carrefour, apteka, poczta. 5 km do centrum handlowego Janki oraz do centrum konferencyjno-wystawienniczo-handlowego PTAK Nadarzyn, liczne restauracje, bary, centra konferencyjne</p>
                   </div>
                 </b-col>
                 <b-col lg="6" sm="12" class="pb-3">
                   <div>
                     <i class="fas fa-bus-alt feature-icon"></i>
                     <h5>Komunikacja miejska</h5>
-                    <p>W promieniu 500m przystanek autobusowy Łazy, Spokojna. Szybki dojazd do centrum, blisko trasy krakowskiej i katowickiej.</p>
+                    <p>W promieniu 500m przystanek autobusowy warszawskiej komunikacji aglomeracyjnej Łazy, Spokojna. Szybki dojazd do centrum, blisko trasy krakowskiej i katowickiej.</p>
                   </div>
                 </b-col>
                 <b-col lg="6" sm="12" class="pb-3">
@@ -93,7 +97,7 @@ export default {
   margin-bottom: 10%;
 }
 .feature-icon {
-  font-size: 2em;
+  font-size: 2.9em;
   color: #be9844;
   padding-bottom: 2.5%;
   padding-top: 2.5%;

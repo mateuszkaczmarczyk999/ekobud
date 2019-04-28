@@ -1,11 +1,21 @@
 <template>
-  <div class="list-container">
-    <b-table responsive bordered hover :items="items" :fields="fields" :thead-tr-class="headClass">
+  <div class="list-container pl-0 pr-0">
+    <b-table
+      selectable
+      select-mode="single"
+      @row-selected="rowSelected"
+      responsive
+      bordered
+      hover
+      :items="items"
+      :fields="fields"
+      thead-tr-class="thead-dark"
+    >
       <template slot="reservation" slot-scope="data">
-        <i class="fas fa-envelope action-icon" @click="sendEmail(data)"></i>
+        <i v-if="data.item.available" v-b-modal.contact-modal @click="openModal(data.item)" class="fas fa-envelope action-icon"></i>
       </template>
       <template slot="plan" slot-scope="data">
-        <i class="fas fa-map action-icon" @click="showPlan(data)"></i>
+        <i class="fas fa-map action-icon" v-b-modal.plan-modal @click="openPlan(data.item)"></i>
       </template>
     </b-table>
   </div>
@@ -13,39 +23,58 @@
 
 <script>
 export default {
+  props: {
+    buildingIdx: { type: Number, default: 8 }
+  },
   data () {
     return {
-      headClass: 'thead-dark',
       fields: [
-        { key: 'flat_number', label: 'Numer Lokalu' },
+        { key: 'flat_number', label: 'Numer domu' },
         { key: 'area', label: 'Powierzchnia' },
-        { key: 'rooms', label: 'Ilość Pokoi' },
-        { key: 'area_price', label: 'Cena za m²' },
-        { key: 'price', label: 'Cena' },
+        // { key: 'area_price', label: 'Cena za m²' },
+        // { key: 'price', label: 'Cena' },
         { key: 'status', label: 'Status' },
-        { key: 'reservation', label: 'Rezerwacja' },
+        { key: 'reservation', label: 'Zapytaj o cenę' },
         { key: 'plan', label: 'Rzut' }
       ],
-      items: [
-        {flat_number: 'A1', area: '100,89 m²', rooms: 4, area_price: '6535 zł', price: '559 035 zł', status: 'dostępne'},
-        {flat_number: 'A2', area: '100,89 m²', rooms: 4, area_price: '6535 zł', price: '559 035 zł', status: 'dostępne'},
-        {flat_number: 'B3', area: '100,89 m²', rooms: 4, area_price: '6535 zł', price: '559 035 zł', status: 'dostępne'},
-        {flat_number: 'B4', area: '100,89 m²', rooms: 4, area_price: '6535 zł', price: '559 035 zł', status: 'dostępne'},
-        {flat_number: 'C5', area: '100,89 m²', rooms: 4, area_price: '6535 zł', price: '559 035 zł', status: 'dostępne'},
-        {flat_number: 'C6', area: '100,89 m²', rooms: 4, area_price: '6535 zł', price: '559 035 zł', status: 'dostępne'},
-        {flat_number: 'D7', area: '100,89 m²', rooms: 4, area_price: '6535 zł', price: '559 035 zł', status: 'dostępne'},
-        {flat_number: 'D8', area: '100,89 m²', rooms: 4, area_price: '6535 zł', price: '559 035 zł', status: 'dostępne'}
-      ]
+      items: []
     }
   },
+  created () {
+    this.initTable()
+  },
   methods: {
-    showPlan (el) {
-      console.log('Plan')
-      console.log(el)
+    openModal (el) {
+      const message = `Dzień Dobry, interesuje mnie budynek o numerze "${el.flat_number}" z inwestycji "Osiedle przy Cichej". Proszę o kontakt.`
+      this.$emit('mail', message)
     },
-    sendEmail (el) {
-      console.log('E-mail')
-      console.log(el)
+    openPlan (el) {
+      this.$emit('plan', el.flat_number)
+    },
+    rowSelected (el) {
+      if (el.length > 0) this.$emit('select', el[0].flat_number)
+      else this.$emit('select', 'Całość')
+    },
+    initTable () {
+      this.items = [
+        {flat_number: 'A', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
+        {flat_number: 'B', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
+        {flat_number: 'C', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
+        {flat_number: 'D', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
+        {flat_number: 'E', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
+        {flat_number: 'F', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
+        {flat_number: 'G', area: '159,90 m²', area_price: '6535 zł', price: '559 035 zł', status: 'niedostępne', available: false, _rowVariant: ''},
+        {flat_number: 'H', area: '159,90 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''}
+      ]
+    },
+    coloritem (idx) {
+      // this.initTable()
+      // if (idx < this.items.length) this.items[idx]['_rowVariant'] = 'warning'
+    }
+  },
+  watch: {
+    buildingIdx (val) {
+      this.coloritem(val)
     }
   }
 }
@@ -54,9 +83,9 @@ export default {
 <style scoped>
 .list-container {
   text-align: center;
-  margin-top: 2.5%;
   margin-left: 10%;
   margin-right: 10%;
+  margin-top: 5%;
   margin-bottom: 5%;
 }
 .action-icon {
@@ -64,9 +93,13 @@ export default {
   color: #4884bd;
 }
 .action-icon:hover {
-  font-size: 1.6em;
   color: gray;
   cursor: pointer;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+.backdrop {
+  z-index: 2000;
+  padding: 0;
+  margin: 0;
 }
 </style>

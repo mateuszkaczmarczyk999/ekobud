@@ -1,28 +1,15 @@
 <template>
   <div class="plan-container">
     <b-container fluid>
-      <b-row>
-        <b-col lg md="6" class="pt-2 pb-2 pl-0 pr-0">
-          <div class="bg-container">
-            <b-img :src="imgSource" fluid></b-img>
-            <!-- <lightbox style="'width': 50vw" :thumbnail="imgSource" :images="imgSourceAr">
-              <lightbox-default-loader slot="loader"/>
-            </lightbox> -->
-          </div>
-        </b-col>
-        <b-col lg md="6" class="pt-2 pb-2" align-self="center">
+      <b-row class="bg-container">
+        <b-col cols="6">
           <div class="plan-selection">
             <b-img :src="planSource" fluid></b-img>
-            <b-form-group>
-              <b-form-radio-group
-                id="btn-radios-2"
-                v-model="selected"
-                :options="options"
-                plain
-                size="sm"
-                name="radio-btn-outline"
-                ></b-form-radio-group>
-              </b-form-group>
+          </div>
+        </b-col>
+        <b-col cols="6" align-self="center" >
+          <div>
+            <b-img thumbnail :src="imgSource" fluid></b-img>
           </div>
         </b-col>
       </b-row>
@@ -31,13 +18,15 @@
 </template>
 
 <script>
+import OfferList from '../components/OfferList'
+
 export default {
   props: {
-    buildings: Object
+    buildings: Object,
+    selected: { type: String, default: 'Całość' }
   },
   data () {
     return {
-      selected: 'Całość',
       options: []
     }
   },
@@ -45,14 +34,14 @@ export default {
     this.createRadioOptions()
   },
   computed: {
-    imgSource () {
+    indexSource () {
       return this.buildings[this.selected][0]
     },
-    imgSourceAr () {
-      return [this.buildings[this.selected][0]]
+    imgSource () {
+      return this.buildings[this.selected][1]
     },
     planSource () {
-      return this.buildings[this.selected][1]
+      return this.buildings[this.selected][2]
     }
   },
   methods: {
@@ -62,26 +51,52 @@ export default {
           this.options.push({ text: property, value: property })
         }
       }
+    },
+    switchBuilding (newVal) {
+      this.$emit('building-change', newVal)
+    },
+    passMessage (val) {
+      this.$emit('show-modal', val)
     }
+  },
+  components: {
+    OfferList
   }
 }
 </script>
 
 <style scoped>
 .bg-container {
-  background-color: lightgray;
+  background-color: rgb(49, 49, 49);
   padding-left: 10%;
-  padding-right: 5%;
+  padding-right: 10%;
   padding-top: 5%;
   padding-bottom: 5%;
 }
 .plan-container {
   text-align: center;
 }
+.parent-switch {
+  position: relative;
+}
+.child-switch {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .plan-selection {
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-bottom: 10%;
-  padding-top: 5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+}
+.fade-enter-active, .fade-leave-active {
+  -webkit-transition: opacity .6s ease-in-out;
+  -moz-transition: opacity .6s ease-in-out;
+  -o-transition: opacity .6s ease-in-out;
+  transition: opacity .6s ease-in-out;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

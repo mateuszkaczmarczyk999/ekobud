@@ -1,10 +1,11 @@
 <template>
   <div class="contact-container">
-    <b-img class="img-cover" :src="imgSrc" fluid-grow></b-img>
+    <b-img class="img-cover" :src="imgSrc"></b-img>
     <div class="card-middle">
-      <h1 class="pt-3">Masz pytania?</h1>
-      <h4 class="pb-0 mb-0">tel: 501-501-501</h4>
-      <h4>e-mail: kontak@ekobud.org</h4>
+      <h1 class="pt-3 pl-0 pr-0 ml-0 mr-0">Masz pytania?</h1>
+      <h4 class="pb-0 mb-0">tel: <strong>{{ phone1 }}</strong></h4>
+      <h4 class="pb-0 mb-0">tel: <strong>{{ phone2 }}</strong></h4>
+      <h4>e-mail:  <strong>{{ mail }}</strong></h4>
     </div>
   </div>
 </template>
@@ -14,7 +15,10 @@ import contactBg from '.././assets/contact-bg.jpg'
 export default {
   data () {
     return {
-      imgSrc: contactBg
+      imgSrc: contactBg,
+      phone1: '577 530 003',
+      phone2: '577 530 008',
+      mail: 'kontak@ekobud.org'
     }
   }
 }
@@ -24,10 +28,15 @@ export default {
   .contact-container {
     position: relative;
     width: 100%;
-    margin-bottom: 2.5%;
+  }
+  .img-cover {
+    height: 40vh;
+    width: 100%;
+    object-fit: cover;
   }
   .card-middle {
     text-align: center;
+    font-size: 16px;
     color: aliceblue;
     position: absolute;
     top: 50%;
@@ -38,13 +47,13 @@ export default {
   }
   h1 {
     font-weight: 600;
-    font-size: 4vw;
+    font-size: 3em;
     margin-bottom: 1%;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
   }
   h4 {
-    font-size: 2vw;
-    font-weight: 600;
+    font-size: 2em;
+    font-weight: 400;
     margin-bottom: 1%;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
   }

@@ -5,7 +5,7 @@
         <b-col sm="12" lg="6" class="pt-5 pb-4">
           <VisualizationGallery noResize :images="visualization"/>
         </b-col>
-        <b-col align-self="center" sm="12" lg="6" class="pb-5">
+        <b-col align-self="center" sm="12" lg="6" class="pb-5" data-aos="fade-left">
           <Title :name="aboutFirm.title" :header="aboutFirm.header"/>
           <router-link to="/o_nas">dowiedz się więcej _</router-link>
         </b-col>

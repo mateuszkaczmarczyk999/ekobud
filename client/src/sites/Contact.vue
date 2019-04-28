@@ -8,10 +8,10 @@
 import BusinessCard from '../components/BusinessCard'
 
 export default {
-  name: 'Main',
+  name: 'Contact',
   data () {
     return {
-      name: 'DUPA'
+      name: ''
     }
   },
   components: {

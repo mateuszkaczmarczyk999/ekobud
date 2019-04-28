@@ -5,7 +5,7 @@
         <b-col lg="6" sm="12" class="pb-3">
           <div>
             <i class="fas fa-tree feature-icon"></i>
-            <h5>Ekologiczna konstrukcyja</h5>
+            <h5>Ekologiczna konstrukcja</h5>
             <p>Proekologicznym rozwiązania konstrukcyjne tworzą w budynku przyjazny mikroklimat.</p>
           </div>
         </b-col>
@@ -13,7 +13,7 @@
           <div>
             <i class="fas fa-leaf feature-icon"></i>
             <h5>Energooszczędna architektura</h5>
-            <p>Szkieletowa konstrukcji przegród oraz staranie wykonana izolacja cieplna budynku minimalizuje straty ciepła.</p>
+            <p>Szkieletowa konstrukcja przegród oraz starannie wykonana izolacja cieplna budynku minimalizuje straty ciepła.</p>
           </div>
         </b-col>
       </b-row>
@@ -21,7 +21,7 @@
         <b-col lg="6" sm="12" class="pb-3">
           <div>
             <i class="fas fa-sun feature-icon"></i>
-            <h5>Odnawialne źródła ehergii</h5>
+            <h5>Odnawialne źródła energii</h5>
             <p>Panele fotowoltaiczne, rekuperacja, pompy ciepła umożliwiają racjonalną i zrównoważoną gospodarkę energii w domu.</p>
           </div>
         </b-col>
@@ -59,7 +59,7 @@ export default {
   margin-bottom: 5%;
 }
 .feature-icon {
-  font-size: 2.4em;
+  font-size: 2.9em;
   color: #4884bd;
   padding-bottom: 2.5%;
   padding-top: 2.5%;

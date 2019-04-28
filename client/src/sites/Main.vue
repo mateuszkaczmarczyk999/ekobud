@@ -2,23 +2,21 @@
   <div id="main">
     <OfferDetails shortView :main-offer="mainOffer"/>
     <FirmCard :visualization="visualization" :aboutFirm="aboutFirm"/>
+    <ContactBar/>
     <BlogCard :news="news"/>
   </div>
 </template>
 
 <script>
-import Title from '../components/Title'
 import OfferDetails from '../components/OfferDetails'
-import VisualizationGallery from '../components/VisualizationGallery'
 import FirmCard from '../components/FirmCard'
 import BlogCard from '../components/BlogCard'
-import MainButton from '../components/MainButton'
 import ContactBar from '../components/ContactBar'
-import SimpleCard from '../components/SimpleCard'
-import about from '.././assets/about.jpg'
 import viz1 from '.././assets/viz1.jpg'
-import viz2 from '.././assets/viz2.jpg'
 import viz3 from '.././assets/viz3.jpg'
+import viz4 from '.././assets/viz4.jpg'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default {
   name: 'Main',
@@ -27,8 +25,7 @@ export default {
       name: '"Osiedle przy Cichej"',
       aboutFirm: {
         title: 'O nas',
-        header: 'Firma realizującą inwestycje polegające na budowaniu i ' +
-              'sprzedaży budynków mieszkalnych jednorodzinnych ekologicznych i energooszczednych.'
+        header: 'Jesteśmy firmą realizującą inwestycje polegające na budowaniu i sprzedaży budynków mieszkalnych jednorodzinnych ekologicznych i energooszczędnych.'
       },
       news: {
         title: 'Aktualności',
@@ -37,16 +34,15 @@ export default {
         img: null
       },
       mainOffer: { id: 1,
-        title: '"Osielde przy Cichej"',
+        title: '"Osiedle przy Cichej"',
         imgSource: viz1,
         btn: 'Szczegóły oferty',
         realizationTerm: 'Termin realizacji: IV kwartał 2019',
         text: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
               'w miejscowosci Łazy, sąsiadującej z legendarną Magdalenką.'
       },
-      visualization: [viz2, viz3],
+      visualization: [viz3, viz4],
       imgFile: viz1,
-      bImg: about,
       postText: 'Pomysłodawcą projektu są członkowie zarządu. Firma EKO-BUD INVESTMENT ' +
            'to inicjatywa rodzinna założona przez dwie współwłaścicielki, ' +
            'siostry, które wychowały się w rodzinie przedsiębiorców. ' +
@@ -57,7 +53,10 @@ export default {
     }
   },
   components: {
-    Title, OfferDetails, FirmCard, BlogCard, MainButton, ContactBar, SimpleCard, VisualizationGallery
+    OfferDetails, FirmCard, ContactBar, BlogCard
+  },
+  created () {
+    AOS.init()
   }
 }
 </script>

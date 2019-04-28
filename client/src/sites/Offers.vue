@@ -24,24 +24,6 @@ export default {
           btn: 'Szczegóły',
           msg: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
              'w miejscowosci Łazy, sąsiadującej z legendarną Magdalenką.'
-        },
-        { id: 2,
-          title: '"Osielde przy Cichej"',
-          term: 'Termin realizacji: IV kwartał 2019',
-          imgFile: viz1,
-          imgSize: '500',
-          btn: 'Szczegóły',
-          msg: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
-             'w miejscowosci Łazy, sąsiadującej z legendarną Magdalenką.'
-        },
-        { id: 3,
-          title: '"Osielde przy Cichej"',
-          term: 'Termin realizacji: IV kwartał 2019',
-          imgFile: viz1,
-          imgSize: '500',
-          btn: 'Szczegóły',
-          msg: 'Ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, ' +
-             'w miejscowosci Łazy, sąsiadującej z legendarną Magdalenką.'
         }
       ]
     }

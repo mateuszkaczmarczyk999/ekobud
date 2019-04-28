@@ -4,48 +4,55 @@
     <div class="footer-container" >
       <b-container fluid>
         <b-row>
-          <b-col sm="12" lg="4" class="contact-column">
-            <b-img :src="logoSrc" left height="50px"></b-img>
+          <b-col md="12" lg="4" class="contact-column">
+            <b-img :src="logoSrc" left height="66px"></b-img>
           </b-col>
-          <b-col sm="12" lg="3" class="contact-column">
+          <b-col md="12" lg="3" class="contact-column">
             <h4>Menu</h4>
-            <p>Oferta</p>
-            <p>Aktualności</p>
-            <p>O nas</p>
-            <p>Kontakt</p>
-            <p>Regulamin</p>
+            <p><router-link class="footer-item" to="/">Strona główna</router-link></p>
+            <p><router-link class="footer-item" to="/oferty">Oferta</router-link></p>
+            <p><router-link class="footer-item" to="/aktualności">Aktualności</router-link></p>
+            <p><router-link class="footer-item" to="/o_nas">O nas</router-link></p>
+            <p><router-link class="footer-item" to="/kontakt">Kontakt</router-link></p>
             <p>Polityka prywatności i pliki cookies</p>
           </b-col>
-          <b-col sm="12" lg="3" class="contact-column">
+          <b-col md="12" lg="4" class="contact-column">
             <h4>Kontakt</h4>
             <p>EKO-BUD Investment Sp.Z O.O. Sp.K.</p>
             <p>ul. Cicha 4, 05-552 Łazy</p>
             <p>tel. +48 577 530 003</p>
+            <p>tel. +48 577 530 008</p>
             <p>e-mail: kontakt@ekobud.org</p>
             <p>NIP: 1231411749</p>
             <p>REGON: 381361518</p>
           </b-col>
-          <b-col sm="12" lg="2" class="contact-column">
-            <h4>Social media</h4>
+          <b-col md="12" lg="1" class="contact-column text-right" align-self="end">
+            <!-- <h4>Social media</h4> -->
             <div>
-              <i class="fab fa-facebook contact-icon contact-inline"></i>
-              <p class="contact-inline">Facebook</p>
+              <b-link href="https://www.facebook.com/deweloper.ekobud.investment/" class="contact-icon">
+                <i class="fab fa-facebook"></i>
+              </b-link>
+              <!-- <p class="contact-inline">Facebook</p> -->
             </div>
             <div>
-              <i class="fab fa-instagram contact-icon contact-inline"></i>
-              <p class="contact-inline">Instagram</p>
+              <b-link href="https://www.instagram.com/ekobud.investment_deweloper/" class="contact-icon">
+                <i class="fab fa-instagram"></i>
+              </b-link>
+              <!-- <p class="contact-inline">Instagram</p> -->
             </div>
             <div>
-              <i class="fab fa-pinterest-square contact-icon contact-inline"></i>
-              <p class="contact-inline">Pinterest</p>
+              <b-link href="https://pl.pinterest.com/ekobud_investment/" class="contact-icon">
+                <i class="fab fa-pinterest-square"></i>
+              </b-link>
+              <!-- <p class="contact-inline">Pinterest</p> -->
             </div>
           </b-col>
         </b-row>
         <b-row>
-          <b-col sm="12" lg="8" class="contact-column">
+          <b-col md="12" lg="8" class="contact-column">
             <p>©Copyright 2019</p>
           </b-col>
-          <b-col sm="12" lg="4" class="contact-column">
+          <b-col md="12" lg="4" class="contact-column text-right">
             <p>autor: Virtual Architecture</p>
           </b-col>
         </b-row>
@@ -70,8 +77,7 @@ export default {
 
 <style scoped>
   footer {
-    margin-left: 0;
-    margin-right: 0;
+    margin: 0;
   }
   .underline {
     color:black;
@@ -88,10 +94,17 @@ export default {
     display: inline-block;
   }
   .contact-icon {
-    font-size: 1em;
+    color:black;
+    text-align: center;
+    font-size: 2.8em;
     padding-bottom: 2.5%;
     padding-top: 2.5%;
     padding-right: 2.5%;
+  }
+  .contact-icon:hover {
+    color: #F1B900;
+    text-decoration: none;
+    cursor: pointer;
   }
   .contact-column {
     padding-bottom: 5%;
@@ -99,7 +112,7 @@ export default {
   }
   h4 {
     font-weight: 600;
-    font-size: 1.1em;
+    font-size: 1.5em;
     margin-bottom: 1em;
   }
   p {
@@ -108,5 +121,12 @@ export default {
     margin-bottom: 0;
     margin-top: 0;
     padding-bottom: 0.7em;
+  }
+  .footer-item {
+    color:black;
+  }
+  .footer-item:hover {
+    text-shadow: 2px 2px 20px rgba(125, 125, 125, 0.5);
+    text-decoration: none;
   }
 </style>

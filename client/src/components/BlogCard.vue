@@ -3,7 +3,7 @@
     <div class="card-container">
       <b-container fluid>
         <b-row>
-          <b-col sm="12" lg="6" class="pt-4 pb-4">
+          <b-col sm="12" lg="6" class="pt-4 pb-4" data-aos="fade-right">
             <Title :name="news.title" :header="news.header"/>
             <router-link to="/aktualności">dowiedz się więcej _</router-link>
           </b-col>

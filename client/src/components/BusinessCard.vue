@@ -20,12 +20,16 @@
             </b-col>
             <b-col align-self="end" lg="8" sm="12" class="pb-5">
               <div class="mb-1">
+                <i class="far fa-envelope contact-icon contact-inline"></i>
+                <h5 class="contact-inline">kontakt@ekobud.org</h5>
+              </div>
+              <div class="mb-1">
                 <i class="fas fa-phone contact-icon contact-inline"></i>
                 <h5 class="contact-inline">+48 577 530 003</h5>
               </div>
               <div class="mb-1">
-                <i class="far fa-envelope contact-icon contact-inline"></i>
-                <h5 class="contact-inline">kontakt@ekobud.org</h5>
+                <i class="fas fa-phone contact-icon contact-inline"></i>
+                <h5 class="contact-inline">+48 577 530 008</h5>
               </div>
             </b-col>
           </b-row>
@@ -55,7 +59,8 @@ export default {
       nip: 'NIP: 1231411749',
       regon: 'REGON: 381361518',
       email: 'kontakt@ekobud.org',
-      phone: '501-501-501',
+      phone1: '577 530 003',
+      phone2: '577 530 008',
       street: 'ul. Łazy 4',
       postCode: '05-552 Łazy'
     }
