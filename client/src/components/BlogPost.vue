@@ -1,10 +1,10 @@
 <template>
   <div class="post-container">
     <h1>{{ post.title }}</h1>
-    <h2>{{ post.subTitle }}</h2>
-    <VisualizationGallery :images="post.imgFiles" v-if="anyImages"/>
+    <h2>{{ post.description }}</h2>
+    <VisualizationGallery :images="post.images" v-if="anyImages"/>
     <b-embed v-if="post.movieUrl" class="pt-3 pb-5" type="iframe" aspect="16by9" :src="post.movieUrl" allowfullscreen></b-embed>
-    <p class="pt-5">{{ post.date }}</p>
+    <p class="pt-5">{{ formatedDate }}</p>
   </div>
 </template>
 
@@ -13,11 +13,27 @@ import VisualizationGallery from '../components/VisualizationGallery'
 
 export default {
   props: {
-    post: Object
+    post: { type: Object, default: null }
+  },
+  data () {
+    return {
+      monthNames: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Paźdzernik', 'Listopad', 'Grudzień']
+    }
   },
   computed: {
     anyImages () {
-      return this.post.imgFiles.length > 0
+      return this.post.images.length > 0
+    },
+    formatedDate () {
+      if (this.post) {
+        let cDate = new Date(this.post.createDate)
+        const day = cDate.getDate()
+        const monthIndex = cDate.getMonth()
+        const year = cDate.getFullYear()
+        return `${day} ${this.monthNames[monthIndex]} ${year}`
+      } else {
+        return ''
+      }
     }
   },
   components: {

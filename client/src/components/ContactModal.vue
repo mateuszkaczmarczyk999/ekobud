@@ -10,7 +10,7 @@
     @shown="showModal"
     @hidden="hideModal"
     :title="header"
-  ><ContactForm :text="message" :resetValidation="reset" @sent="mailSent"/>
+  ><ContactForm :text="message" :title="title" :resetValidation="reset" @sent="mailSent"/>
   </b-modal>
 </template>
 
@@ -20,7 +20,8 @@ import ContactForm from '../components/ContactForm'
 export default {
   props: {
     header: { type: String, default: 'Zapytaj o cenę' },
-    message: { type: String, default: '' }
+    message: { type: String, default: '' },
+    title: { type: String, default: '' }
   },
   data () {
     return {

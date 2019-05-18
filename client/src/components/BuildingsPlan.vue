@@ -1,15 +1,15 @@
 <template>
-  <div class="plan-container">
+  <div class="plan-container" id="pzt">
     <b-container fluid>
       <b-row class="bg-container">
-        <b-col cols="6">
-          <div class="plan-selection">
-            <b-img :src="planSource" fluid></b-img>
-          </div>
-        </b-col>
-        <b-col cols="6" align-self="center" >
+        <b-col lg="6" sm="12" align-self="center">
           <div>
             <b-img thumbnail :src="imgSource" fluid></b-img>
+          </div>
+        </b-col>
+        <b-col lg="6" sm="12">
+          <div class="plan-selection">
+            <b-img :src="planSource" fluid></b-img>
           </div>
         </b-col>
       </b-row>
@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import OfferList from '../components/OfferList'
-
 export default {
   props: {
     buildings: Object,
@@ -34,14 +32,11 @@ export default {
     this.createRadioOptions()
   },
   computed: {
-    indexSource () {
+    imgSource () {
       return this.buildings[this.selected][0]
     },
-    imgSource () {
-      return this.buildings[this.selected][1]
-    },
     planSource () {
-      return this.buildings[this.selected][2]
+      return this.buildings[this.selected][1]
     }
   },
   methods: {
@@ -58,9 +53,6 @@ export default {
     passMessage (val) {
       this.$emit('show-modal', val)
     }
-  },
-  components: {
-    OfferList
   }
 }
 </script>

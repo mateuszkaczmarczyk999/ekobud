@@ -5,46 +5,42 @@
       <b-container fluid>
         <b-row>
           <b-col md="12" lg="4" class="contact-column">
-            <b-img :src="logoSrc" left height="66px"></b-img>
+            <b-img :src="logoSrc" left width="220"></b-img>
           </b-col>
           <b-col md="12" lg="3" class="contact-column">
             <h4>Menu</h4>
             <p><router-link class="footer-item" to="/">Strona główna</router-link></p>
             <p><router-link class="footer-item" to="/oferty">Oferta</router-link></p>
-            <p><router-link class="footer-item" to="/aktualności">Aktualności</router-link></p>
+            <p><router-link class="footer-item" to="/aktualnosci">Aktualności</router-link></p>
             <p><router-link class="footer-item" to="/o_nas">O nas</router-link></p>
             <p><router-link class="footer-item" to="/kontakt">Kontakt</router-link></p>
             <p>Polityka prywatności i pliki cookies</p>
           </b-col>
           <b-col md="12" lg="4" class="contact-column">
             <h4>Kontakt</h4>
-            <p>EKO-BUD Investment Sp.Z O.O. Sp.K.</p>
-            <p>ul. Cicha 4, 05-552 Łazy</p>
-            <p>tel. +48 577 530 003</p>
-            <p>tel. +48 577 530 008</p>
-            <p>e-mail: kontakt@ekobud.org</p>
-            <p>NIP: 1231411749</p>
-            <p>REGON: 381361518</p>
+            <p>{{ fullName }}</p>
+            <p>{{ address }}</p>
+            <p>tel. {{ phone1st }}</p>
+            <p>tel. {{ phone2nd }}</p>
+            <p>e-mail: {{ email }}</p>
+            <p>NIP: {{ nip }}</p>
+            <p>REGON: {{ regon }}</p>
           </b-col>
           <b-col md="12" lg="1" class="contact-column text-right" align-self="end">
-            <!-- <h4>Social media</h4> -->
             <div>
-              <b-link href="https://www.facebook.com/deweloper.ekobud.investment/" class="contact-icon">
+              <b-link href="https://www.facebook.com/deweloper.ekobud.investment/" class="contact-icon" style="color:#29487D;">
                 <i class="fab fa-facebook"></i>
               </b-link>
-              <!-- <p class="contact-inline">Facebook</p> -->
             </div>
             <div>
-              <b-link href="https://www.instagram.com/ekobud.investment_deweloper/" class="contact-icon">
+              <b-link href="https://www.instagram.com/ekobud.investment_deweloper/" class="contact-icon" style="color:#8134AF;">
                 <i class="fab fa-instagram"></i>
               </b-link>
-              <!-- <p class="contact-inline">Instagram</p> -->
             </div>
             <div>
-              <b-link href="https://pl.pinterest.com/ekobud_investment/" class="contact-icon">
+              <b-link href="https://pl.pinterest.com/ekobud_investment/" class="contact-icon" style="color:#c8232C;">
                 <i class="fab fa-pinterest-square"></i>
               </b-link>
-              <!-- <p class="contact-inline">Pinterest</p> -->
             </div>
           </b-col>
         </b-row>
@@ -63,13 +59,40 @@
 
 <script>
 import logo from '.././assets/simple-full-logo.png'
+import FirmService from '../services/FirmService'
 
 export default {
   name: 'FooterInfo',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      fullName: '',
+      phone1st: '',
+      phone2nd: '',
+      email: '',
+      nip: '',
+      regon: '',
+      addressInfo: null,
       logoSrc: logo
+    }
+  },
+  computed: {
+    address () {
+      if (this.addressInfo) return `${this.addressInfo.street}, ${this.addressInfo.zipCode} ${this.addressInfo.city}`
+      else return ''
+    }
+  },
+  async created () {
+    try {
+      const info = await FirmService.getInformations()
+      this.fullName = info.fullName
+      this.phone1st = info.phone1st
+      this.phone2nd = info.phone2nd
+      this.email = info.email
+      this.nip = info.nip
+      this.regon = info.regon
+      this.addressInfo = info.address
+    } catch (error) {
+      console.log(error.message)
     }
   }
 }
@@ -94,7 +117,6 @@ export default {
     display: inline-block;
   }
   .contact-icon {
-    color:black;
     text-align: center;
     font-size: 2.8em;
     padding-bottom: 2.5%;
@@ -102,7 +124,7 @@ export default {
     padding-right: 2.5%;
   }
   .contact-icon:hover {
-    color: #F1B900;
+    color: rgb(75, 75, 75);
     text-decoration: none;
     cursor: pointer;
   }

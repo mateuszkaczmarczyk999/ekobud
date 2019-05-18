@@ -1,9 +1,7 @@
 <template>
   <div class="list-container pl-0 pr-0">
     <b-table
-      selectable
       select-mode="single"
-      @row-selected="rowSelected"
       responsive
       bordered
       hover
@@ -11,11 +9,21 @@
       :fields="fields"
       thead-tr-class="thead-dark"
     >
+      <template slot="HEAD_pzt" slot-scope="data">
+        <b-button size="sm" variant="secondary" v-scroll-to="'#pzt'" @click="showOnPlan(data.item)">Plan zagospodarowania</b-button>
+      </template>
       <template slot="reservation" slot-scope="data">
         <i v-if="data.item.available" v-b-modal.contact-modal @click="openModal(data.item)" class="fas fa-envelope action-icon"></i>
       </template>
+      <template slot="available" slot-scope="data">
+        <p v-if="data.item.available">Dostępne</p>
+        <p v-else>Zarezerwowane</p>
+      </template>
       <template slot="plan" slot-scope="data">
         <i class="fas fa-map action-icon" v-b-modal.plan-modal @click="openPlan(data.item)"></i>
+      </template>
+      <template slot="pzt" slot-scope="data">
+        <b-button size="sm" variant="secondary" v-scroll-to="'#pzt'" @click="showOnPlan(data.item)">Pokaż na planie</b-button>
       </template>
     </b-table>
   </div>
@@ -24,57 +32,31 @@
 <script>
 export default {
   props: {
-    buildingIdx: { type: Number, default: 8 }
+    items: { type: Array }
   },
   data () {
     return {
       fields: [
-        { key: 'flat_number', label: 'Numer domu' },
+        { key: 'flatNumber', label: 'Numer domu' },
         { key: 'area', label: 'Powierzchnia' },
-        // { key: 'area_price', label: 'Cena za m²' },
-        // { key: 'price', label: 'Cena' },
-        { key: 'status', label: 'Status' },
+        { key: 'available', label: 'Status' },
         { key: 'reservation', label: 'Zapytaj o cenę' },
-        { key: 'plan', label: 'Rzut' }
-      ],
-      items: []
+        { key: 'plan', label: 'Rzut' },
+        { key: 'pzt', label: 'Plan zagospodarowania' }
+      ]
     }
-  },
-  created () {
-    this.initTable()
   },
   methods: {
     openModal (el) {
-      const message = `Dzień Dobry, interesuje mnie budynek o numerze "${el.flat_number}" z inwestycji "Osiedle przy Cichej". Proszę o kontakt.`
-      this.$emit('mail', message)
+      const message = `Dzień Dobry, interesuje mnie budynek o numerze "${el.flatNumber}" w inwestycji "Osiedle przy Cichej". Proszę o kontakt.`
+      this.$emit('mail', message, el.flatNumber)
     },
     openPlan (el) {
-      this.$emit('plan', el.flat_number)
+      this.$emit('plan', el.flatNumber)
     },
-    rowSelected (el) {
-      if (el.length > 0) this.$emit('select', el[0].flat_number)
+    showOnPlan (el) {
+      if (el) this.$emit('select', el.flatNumber)
       else this.$emit('select', 'Całość')
-    },
-    initTable () {
-      this.items = [
-        {flat_number: 'A', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
-        {flat_number: 'B', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
-        {flat_number: 'C', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
-        {flat_number: 'D', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
-        {flat_number: 'E', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
-        {flat_number: 'F', area: '135,55 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''},
-        {flat_number: 'G', area: '159,90 m²', area_price: '6535 zł', price: '559 035 zł', status: 'niedostępne', available: false, _rowVariant: ''},
-        {flat_number: 'H', area: '159,90 m²', area_price: '6535 zł', price: '559 035 zł', status: 'dostępne', available: true, _rowVariant: ''}
-      ]
-    },
-    coloritem (idx) {
-      // this.initTable()
-      // if (idx < this.items.length) this.items[idx]['_rowVariant'] = 'warning'
-    }
-  },
-  watch: {
-    buildingIdx (val) {
-      this.coloritem(val)
     }
   }
 }
@@ -90,7 +72,7 @@ export default {
 }
 .action-icon {
   font-size: 1.5em;
-  color: #4884bd;
+  color: #0081a1;
 }
 .action-icon:hover {
   color: gray;

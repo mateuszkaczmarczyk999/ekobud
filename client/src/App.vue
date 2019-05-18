@@ -2,7 +2,9 @@
   <div id="app">
     <MenuBar/>
     <transition name="fade" mode="out-in">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </transition>
     <FooterInfo/>
   </div>

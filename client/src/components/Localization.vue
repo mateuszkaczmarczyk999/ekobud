@@ -18,46 +18,11 @@
           <div class="features-container">
             <b-container fluid>
               <b-row>
-                <b-col lg="6" sm="12" class="pb-3">
+                <b-col lg="6" sm="12" class="pb-3" :key="item.name" v-for="item in items">
                   <div>
-                    <i class="fas fa-graduation-cap feature-icon"></i>
-                    <h5>Edukacja</h5>
-                    <p>W pobliżu liczne przedszkola i żłobki oraz Biblioteka Publiczna, Szkoła Podstawowa Publiczna, Szkoła Podstawowa Niepubliczna Katolicka, Publiczne Katolickie Liceum Ogólnokształcące.</p>
-                  </div>
-                </b-col>
-                <b-col lg="6" sm="12" class="pb-3">
-                  <div>
-                    <i class="fas fa-clinic-medical feature-icon"></i>
-                    <h5>Zdrowie</h5>
-                    <p>Gabinety kosmetyczne i odnowy biologicznej, zakłady fryzjerskie, ośrodek zdrowia, prywatne gabinety lekarskie, ośrodek rehabilitacji.</p>
-                  </div>
-                </b-col>
-                <b-col lg="6" sm="12" class="pb-3">
-                  <div>
-                    <i class="fas fa-shopping-basket feature-icon"></i>
-                    <h5>Zakupy</h5>
-                    <p>Sklepy spożywcze Lewiatan, Żabka, Carrefour, apteka, poczta. 5 km do centrum handlowego Janki oraz do centrum konferencyjno-wystawienniczo-handlowego PTAK Nadarzyn, liczne restauracje, bary, centra konferencyjne</p>
-                  </div>
-                </b-col>
-                <b-col lg="6" sm="12" class="pb-3">
-                  <div>
-                    <i class="fas fa-bus-alt feature-icon"></i>
-                    <h5>Komunikacja miejska</h5>
-                    <p>W promieniu 500m przystanek autobusowy warszawskiej komunikacji aglomeracyjnej Łazy, Spokojna. Szybki dojazd do centrum, blisko trasy krakowskiej i katowickiej.</p>
-                  </div>
-                </b-col>
-                <b-col lg="6" sm="12" class="pb-3">
-                  <div>
-                    <i class="fas fa-volleyball-ball feature-icon"></i>
-                    <h5>Sport</h5>
-                    <p>W okolicy Centrum Sportu ze wszystkimi możliwymi rodzajami zajęć dla dzieci i dorosłych.</p>
-                  </div>
-                </b-col>
-                <b-col lg="6" sm="12" class="pb-3">
-                  <div>
-                    <i class="fab fa-envira feature-icon"></i>
-                    <h5>Natura</h5>
-                    <p>Zielone i ciche miejsce w bliskim sąsiedztwie z Lasami Sękocińskimi.</p>
+                    <i class="feature-icon" :class="featureIcons[item.name]"></i>
+                    <h5>{{ item.name }}</h5>
+                    <p>{{ item.description }}</p>
                   </div>
                 </b-col>
               </b-row>
@@ -71,9 +36,22 @@
 
 <script>
 export default {
-  data () {
-    return {
-      msg: ''
+  props: {
+    items: { type: Array }
+  },
+  computed: {
+    featureIcons () {
+      let icons = {}
+      for (let idx in this.items) {
+        let name = this.items[idx].name
+        if (name === 'Edukacja') icons[name] = 'fas fa-graduation-cap'
+        if (name === 'Zakupy') icons[name] = 'fas fa-shopping-basket'
+        if (name === 'Sport') icons[name] = 'fas fa-volleyball-ball'
+        if (name === 'Zdrowie') icons[name] = 'fas fa-clinic-medical'
+        if (name === 'Natura') icons[name] = 'fab fa-envira'
+        if (name === 'Komunikacja miejska') icons[name] = 'fas fa-bus-alt'
+      }
+      return icons
     }
   }
 }

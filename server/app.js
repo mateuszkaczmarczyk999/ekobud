@@ -43,14 +43,14 @@ app.use((error, req, res, next) => {
 })
 
 const mongoose = require('mongoose')
-const connectionString = 'mongodb+srv://ekobud:ekobud@cluster0-4r2av.mongodb.net/test?retryWrites=true'
+const connectionString = 'mongodb://mo1310_ekobud:123$567*As@mongo37.mydevil.net:27017/mo1310_ekobud'
+// const connectionString = 'mongodb+srv://ekobud:ekobud@cluster0-4r2av.mongodb.net/test?retryWrites=true'
 
 mongoose.connect(connectionString, { useNewUrlParser: true })
 const db = mongoose.connection
 
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', function () {
-  console.log(process.env)
   console.log('Connected to MongoDB')
 
   app.listen(app.get('port'), function () {

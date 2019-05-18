@@ -7,15 +7,25 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import App from './App'
 import router from './router'
 import Lightbox from 'vue-pure-lightbox'
+import VueScrollTo from 'vue-scrollto'
+import {scroller} from 'vue-scrollto/src/scrollTo'
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(Lightbox)
+Vue.use(VueScrollTo)
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
+  mounted () {
+    router.beforeEach((to, from, next) => {
+      const mainScrollTo = scroller()
+      mainScrollTo('#menu')
+      next()
+    })
+  },
   template: '<App/>'
 })

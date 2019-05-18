@@ -1,7 +1,7 @@
 <template>
   <div :style="bgClass">
-    <div class="visualization-container">
-      <b-container fluid v-if="isLarge">
+    <div class="visualization-container-lg" v-if="isLarge">
+      <b-container fluid>
         <b-row>
           <b-col @click="selectImg(idx)" lg md="6" class="img-container" :key="idx" v-for="(img, idx) in images">
             <lightbox :thumbnail="img" :images="reorderedImgs">
@@ -10,17 +10,19 @@
           </b-col>
         </b-row>
       </b-container>
-      <b-container fluid v-else>
+    </div>
+    <div class="visualization-container-sm" v-else>
+      <b-container fluid>
         <b-row>
-          <b-col cols="2" align-self="center">
+          <b-col cols="2" align-self="center" class="pl-0 pr-0 ml-0 mr-0">
             <i class="fas fa-chevron-left move-action" @click="goPrev"></i>
           </b-col>
-          <b-col cols="8">
+          <b-col cols="8" class="pl-0 pr-0 ml-0 mr-0">
             <lightbox :thumbnail="images[selectedImg]" :images="reorderedImgs">
               <lightbox-default-loader slot="loader"/>
             </lightbox>
           </b-col>
-          <b-col cols="2" align-self="center">
+          <b-col cols="2" align-self="center" class="pl-0 pr-0 ml-0 mr-0">
             <i class="fas fa-chevron-right move-action" @click="goNext"></i>
           </b-col>
         </b-row>
@@ -99,7 +101,7 @@ export default {
 .lightbox__thumbnail img {
   object-fit: cover;
   width: 25vw;
-  height: 25vw;
+  height: 30vw;
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -114,12 +116,19 @@ export default {
 </style>
 
 <style scoped>
-.visualization-container {
+.visualization-container-lg {
   text-align: center;
   margin-top: 2.5%;
   margin-bottom: 2.5%;
   margin-left: 10%;
   margin-right: 10%;
+}
+.visualization-container-sm {
+  text-align: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 .img-container {
   overflow: hidden;
@@ -129,11 +138,11 @@ export default {
   padding-bottom: 0.9%;
 }
 .move-action {
-  font-size: 3em;
+  font-size: 2em;
   color: Tomato;
 }
 .move-action:hover {
-  font-size: 3.2em;
+  font-size: 2.2em;
   color: Tomato;
   cursor: pointer;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);

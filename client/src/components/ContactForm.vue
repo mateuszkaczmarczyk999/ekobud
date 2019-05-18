@@ -13,13 +13,13 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col class="pb-2">
+        <b-col class="pb-2" lg="4" sm="12">
           <b-form-input id="fullName" v-model="fullName" placeholder="imię i nazwisko"></b-form-input>
         </b-col>
-        <b-col class="pb-2">
+        <b-col class="pb-2" lg="4" sm="12">
           <b-form-input id="email" v-model="email" placeholder="e-mail"></b-form-input>
         </b-col>
-        <b-col class="pb-2">
+        <b-col class="pb-2" lg="4" sm="12">
           <b-form-input  id="phone" v-model="phone" placeholder="telefon"></b-form-input>
         </b-col>
       </b-row>
@@ -37,7 +37,7 @@
           <b-button variant="warning" @click="sendMail">Wyślij</b-button>
         </b-col>
       </b-row>
-      <b-row v-if="mailSent">
+      <b-row v-if="succeedMsg">
         <b-col cols=12>
           <p class="succes">Wiadomość została wysłana.</p>
         </b-col>
@@ -59,9 +59,12 @@
 </template>
 
 <script>
+import MailSender from '../services/MailSender'
+
 export default {
   props: {
     text: { type: String, default: '' },
+    title: { type: String, default: '' },
     resetValidation: { type: Boolean, default: false }
   },
   data () {
@@ -74,6 +77,7 @@ export default {
       privacyStatement: 'Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych ' +
             'w formularzu do celów udzielania mi odpowiedzi na zapytanie.',
       errors: {},
+      succeedMsg: false,
       showNameValidations: false,
       showEmailValidations: false,
       showPhoneValidations: false,
@@ -85,10 +89,7 @@ export default {
   methods: {
     sendMail () {
       if (this.validate()) {
-        console.log(this.fullName)
-        console.log(this.email)
-        console.log(this.phone)
-        console.log(this.message)
+        this.mailPendding()
         this.mailSent = true
         this.$emit('sent')
       } else {
@@ -124,8 +125,22 @@ export default {
       }
       this.notConfirmed = this.privacyConfirmed === 'not_accepted'
       const valid = !(this.notConfirmed || this.showEmailValidations || this.showNameValidations || this.showPhoneValidations || this.showMessageValidations)
-      console.log(valid)
       return valid
+    },
+    async mailPendding () {
+      try {
+        let x = await MailSender.sendMailOffer({
+          to: this.email,
+          phone: this.phone,
+          fullName: this.fullName,
+          subject: this.title,
+          message: this.message
+        })
+        this.succeedMsg = true
+        console.log(x)
+      } catch (error) {
+        console.log(error.message)
+      }
     }
   },
   watch: {

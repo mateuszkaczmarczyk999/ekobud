@@ -8,14 +8,17 @@ let addressSchema = new Schema({
   zipCode: { type: String, required: true }
 })
 
-let firmInformationsSchema = new Schema({
+let firmInformationSchema = new Schema({
   name: { type: String, required: true },
   fullName: { type: String, required: true },
   regon: { type: String, required: true },
   nip: { type: String, required: true },
-  phone: { type: String, required: true },
+  phone1st: { type: String, required: true },
+  phone2nd: { type: String, required: true },
   email: { type: String, required: true },
+  description: { type: String, required: true },
+  text: { type: String, required: true },
   address: addressSchema
 })
 
-module.exports = mongoose.model('FirmInformation', firmInformationsSchema)
+module.exports = mongoose.model('FirmInformation', firmInformationSchema)

@@ -1,35 +1,12 @@
 <template>
-  <div class="technology-container">
+  <div class="technology-container" id="tech-section">
     <b-container fluid>
       <b-row>
-        <b-col lg="6" sm="12" class="pb-3">
+        <b-col lg="6" sm="12" class="pb-3" :key="item.name" v-for="item in items">
           <div>
-            <i class="fas fa-tree feature-icon"></i>
-            <h5>Ekologiczna konstrukcja</h5>
-            <p>Proekologicznym rozwiązania konstrukcyjne tworzą w budynku przyjazny mikroklimat.</p>
-          </div>
-        </b-col>
-        <b-col lg="6" sm="12" class="pb-3">
-          <div>
-            <i class="fas fa-leaf feature-icon"></i>
-            <h5>Energooszczędna architektura</h5>
-            <p>Szkieletowa konstrukcja przegród oraz starannie wykonana izolacja cieplna budynku minimalizuje straty ciepła.</p>
-          </div>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col lg="6" sm="12" class="pb-3">
-          <div>
-            <i class="fas fa-sun feature-icon"></i>
-            <h5>Odnawialne źródła energii</h5>
-            <p>Panele fotowoltaiczne, rekuperacja, pompy ciepła umożliwiają racjonalną i zrównoważoną gospodarkę energii w domu.</p>
-          </div>
-        </b-col>
-        <b-col lg="6" sm="12" class="pb-3">
-          <div>
-            <i class="fas fa-home feature-icon"></i>
-            <h5>Prefabrykacja</h5>
-            <p>Przyspieszona realizacja inwestycji oraz bardziej precyzyjny proces wykonastwa przegród budowlanych.</p>
+            <i class="feature-icon" :class="featureIcons[item.name]"></i>
+            <h5>{{ item.name }}</h5>
+            <p>{{ item.description }}</p>
           </div>
         </b-col>
       </b-row>
@@ -39,11 +16,20 @@
 
 <script>
 export default {
-  data () {
-    return {
-      info: [
-        { header: 40, text: 'Dickerson' }
-      ]
+  props: {
+    items: { type: Array }
+  },
+  computed: {
+    featureIcons () {
+      let icons = {}
+      for (let idx in this.items) {
+        let name = this.items[idx].name
+        if (name === 'Ekologiczna konstrukcja') icons[name] = 'fas fa-tree'
+        if (name === 'Energooszczędna architektura') icons[name] = 'fas fa-leaf'
+        if (name === 'Prefabrykacja') icons[name] = 'fas fa-home'
+        if (name === 'Odnawialne źródła energii') icons[name] = 'fas fa-sun'
+      }
+      return icons
     }
   }
 }

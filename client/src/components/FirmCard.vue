@@ -6,7 +6,7 @@
           <VisualizationGallery noResize :images="visualization"/>
         </b-col>
         <b-col align-self="center" sm="12" lg="6" class="pb-5" data-aos="fade-left">
-          <Title :name="aboutFirm.title" :header="aboutFirm.header"/>
+          <Title name="O nas" :header="aboutFirm"/>
           <router-link to="/o_nas">dowiedz się więcej _</router-link>
         </b-col>
       </b-row>
@@ -21,7 +21,7 @@ import Title from '../components/Title'
 export default {
   props: {
     visualization: Array,
-    aboutFirm: Object
+    aboutFirm: String
   },
   data () {
     return {

@@ -2,19 +2,26 @@ const Post = require('../../models/posts')
 
 module.exports = (router) => {
   router.get("/posts", (req, res, next) => {
-    Post.find().select()
+    Post.find().sort({ createDate: 'desc' }).select()
     .then(posts => {
-      const result = {
-        count: posts.length,
-        data: posts
-      }
+      const result = { posts: posts }
       res.status(200).json(result)
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({
-        error: err
-      })
+      res.status(500).json({ error: err })
+    })
+  })
+
+  router.get("/last_post", (req, res, next) => {
+    Post.find().sort({ createDate: 'desc' }).select()
+    .then(posts => {
+      const result = { post: posts[0] }
+      res.status(200).json(result)
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: err })
     })
   })
 

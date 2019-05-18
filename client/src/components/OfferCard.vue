@@ -4,17 +4,17 @@
       <b-row>
         <b-col sm="12" lg="6">
           <div class="card-container">
-            <b-img class="card-image" :src="offer.imgFile" fluid></b-img>
+            <b-img class="card-image" :src="imgFile" fluid></b-img>
             <div class="card-middle">
-              <b-button to="/oferty/1" size="lg" variant="outline-warning">{{ offer.btn }}</b-button>
+              <b-button :to="detailsUrl" size="lg" variant="outline-warning">Szczegóły</b-button>
             </div>
           </div>
         </b-col>
         <b-col sm="12" lg="6">
           <div class="text-container">
-            <h1>{{ offer.title }}</h1>
+            <h1>{{ offer.name }}</h1>
             <h2>{{ offer.term }}</h2>
-            <p>{{ offer.msg }}</p>
+            <p>{{ offer.description }}</p>
           </div>
         </b-col>
       </b-row>
@@ -23,9 +23,20 @@
 </template>
 
 <script>
+import BASE_URL from '../config'
+
 export default {
   props: {
     offer: Object
+  },
+  computed: {
+    detailsUrl () {
+      return `/oferty/${this.offer.idName}`
+    },
+    imgFile () {
+      if (this.offer) return `${BASE_URL}${this.offer.extVisualizations[0]}`
+      else return ''
+    }
   }
 }
 </script>
