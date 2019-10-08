@@ -5,9 +5,10 @@
     <VisualizationGallery background :images="visualizationExt"/>
     <Localization :items="localization"/>
     <BuildingsPlan :buildings="buildings" :selected="selectedBuilding"/>
-    <OfferList @mail="initMessage" @plan="initPlan" @select="initSelection" :items="locals" data-aos="fade-left"/>
+    <OfferList @mail="initMessage" @view="initView" @plan="initPlan" @select="initSelection" :items="locals" data-aos="fade-left"/>
     <ContactModal :message="contactMessage" :title="buildingNum"/>
-    <PlanModal :header="planHeader" :planSrc="planSrc"/>
+    <PlanModal id="plan-modal" :header="planHeader" :planSrc="planSrc"/>
+    <PlanModal id="view-modal" :header="view3dHeader" :planSrc="view3dSrc"/>
     <VisualizationGallery background :images="visualizationInt"/>
   </div>
 </template>
@@ -67,7 +68,8 @@ export default {
       contactMessage: '',
       buildingNum: '',
       selectedBuilding: 'Całość',
-      selectedPlan: null
+      selectedPlan: null,
+      selectedView: null
     }
   },
   methods: {
@@ -77,6 +79,9 @@ export default {
     },
     initPlan (num) {
       this.selectedPlan = num
+    },
+    initView (num) {
+      this.selectedView = num
     },
     initSelection (num) {
       this.selectedBuilding = num
@@ -109,6 +114,17 @@ export default {
           return el.flatNumber === this.selectedPlan
         })
         return `${BASE_URL}${pickedLocals.planPath}`
+      } else return ''
+    },
+    view3dHeader () {
+      return `Widok 3d wnętrza budynku numer ${this.selectedPlan}`
+    },
+    view3dSrc () {
+      if (this.selectedView) {
+        let pickedLocals = this.locals.find((el) => {
+          return el.flatNumber === this.selectedView
+        })
+        return `${BASE_URL}${pickedLocals.viewPath}`
       } else return ''
     },
     visualizationExt () {

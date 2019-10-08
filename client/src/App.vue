@@ -1,23 +1,20 @@
 <template>
   <div id="app">
-    <MenuBar/>
-    <transition name="fade" mode="out-in">
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
-    </transition>
-    <FooterInfo/>
+    <component :is="layout">
+      <router-view></router-view>
+    </component>
   </div>
 </template>
 
 <script>
-import MenuBar from './components/MenuBar'
-import FooterInfo from './components/FooterInfo'
+const defaultLayout = 'default'
 
 export default {
   name: 'App',
-  components: {
-    MenuBar, FooterInfo
+  computed: {
+    layout () {
+      return `${(this.$route.meta.layout || defaultLayout)}-layout`
+    }
   }
 }
 </script>
@@ -28,7 +25,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-body{
+body {
   background-color: #eeecea;
 }
 .fade-enter-active, .fade-leave-active {

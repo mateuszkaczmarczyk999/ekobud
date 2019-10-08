@@ -1,4 +1,5 @@
 const FirmInformation = require('../../models/firmInformations')
+const checkAuth = require('../middleware/checkAuth')
 
 module.exports = (router) => {
   router.get('/firm-information', (req, res, next) => {
@@ -13,11 +14,24 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/firm-information', (req, res, next) => {
-    let firmInfo = new FirmInformation(req.body)
-    firmInfo.save((error, firmInfo) => {
-      if(error) return console.log(error)
-      res.status(200).json(firmInfo)
+  router.post('/update-firm-information', checkAuth, (req, res, next) => {
+    FirmInformation.findOne({ _id: req.body._id }, (err, doc) => {
+      if(err) return console.log(err)
+
+      doc.name = req.body.name
+      doc.fullName = req.body.fullName
+      doc.regon = req.body.regon
+      doc.nip = req.body.nip
+      doc.phone1st = req.body.phone1st
+      doc.phone2nd = req.body.phone2nd
+      doc.description = req.body.description
+      doc.text = req.body.text
+      doc.address = req.body.address
+
+      doc.save((error, post) => {
+        if(error) return console.log(error)
+        res.status(200).json(post)
+      })
     })
   })
 }

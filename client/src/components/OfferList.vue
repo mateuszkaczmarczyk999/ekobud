@@ -22,6 +22,9 @@
       <template slot="plan" slot-scope="data">
         <i class="fas fa-map action-icon" v-b-modal.plan-modal @click="openPlan(data.item)"></i>
       </template>
+      <template slot="view" slot-scope="data">
+        <i class="fas fa-cube action-icon" v-b-modal.view-modal @click="open3dView(data.item)"></i>
+      </template>
       <template slot="pzt" slot-scope="data">
         <b-button size="sm" variant="secondary" v-scroll-to="'#pzt'" @click="showOnPlan(data.item)">Pokaż na planie</b-button>
       </template>
@@ -42,6 +45,7 @@ export default {
         { key: 'available', label: 'Status' },
         { key: 'reservation', label: 'Zapytaj o cenę' },
         { key: 'plan', label: 'Rzut' },
+        { key: 'view', label: 'Rzut 3D' },
         { key: 'pzt', label: 'Plan zagospodarowania' }
       ]
     }
@@ -53,6 +57,9 @@ export default {
     },
     openPlan (el) {
       this.$emit('plan', el.flatNumber)
+    },
+    open3dView (el) {
+      this.$emit('view', el.flatNumber)
     },
     showOnPlan (el) {
       if (el) this.$emit('select', el.flatNumber)

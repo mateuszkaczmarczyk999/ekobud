@@ -1,6 +1,6 @@
 <template>
   <b-modal
-    id="plan-modal"
+    :id="id"
     ref="plan"
     size="lg"
     hide-header
@@ -13,6 +13,7 @@
 <script>
 export default {
   props: {
+    id: { type: String, default: 'modal' },
     header: { type: String, default: '' },
     planSrc: { type: String, default: '' }
   }

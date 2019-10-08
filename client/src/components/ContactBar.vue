@@ -18,7 +18,7 @@ export default {
       imgSrc: contactBg,
       phone1: '577 530 003',
       phone2: '577 530 008',
-      mail: 'kontak@ekobud.org'
+      mail: 'kontakt@ekobud.org'
     }
   }
 }

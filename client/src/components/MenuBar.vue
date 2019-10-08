@@ -1,5 +1,13 @@
 <template>
   <header id="menu">
+    <title>EkoBud deweloper domów ekologicznych</title>
+    <meta name="description" content="EKO-BUD INVESTMENT to inicjatywa rodzinna. Jesteśmy firmą realizującą inwestycje polegające na budowaniu i sprzedaży budynków mieszkalnych jednorodzinnych ekologicznych i energooszczędnych. Nasza aktualna inwestycja 'Osiedle przy Cichej' to ekologiczna inwestycja położona w dynamicznie rozwijajacej się podwarszawskiej gminie Lesznowola, w miejscowosci Łazy, sąsiadującej z legendarną Magdalenką.">
+    <meta name="keywords" content="osiedle przy cichej, ekologiczne domy, energooszczędne domy, ekologia, ekobud, energooszczędne budownictwo, eko-bud investment, domy jednorodzinne okolice Warszawy, Magdalenka.">
+    <meta property="og:title" content="EkoBud deweloper domów ekologicznych">
+    <meta property="og:description" content="Jesteśmy firmą realizującą inwestycje polegające na budowaniu i sprzedaży budynków mieszkalnych jednorodzinnych ekologicznych i energooszczędnych.">
+    <!-- <meta property="og:image" :content="logo"> -->
+    <meta name="author" content="Mateusz Kaczmarczyk Virtual Architecture">
+
     <b-navbar sticky toggleable="lg" class="nav-container" :type="toggleColor">
       <b-navbar-brand>
           <router-link to="/">
@@ -30,6 +38,7 @@ export default {
   name: 'MenuBar',
   data () {
     return {
+      logo: logoBlk,
       menuOpen: false,
       isInvert: false,
       isSmall: false,

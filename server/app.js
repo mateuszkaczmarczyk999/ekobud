@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 
 app.use('/api', api)
 
-if (process.env.NODE_ENV === 'production') {
+if (true) {
   app.use(express.static(__dirname + '/public/'))
   app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
 }

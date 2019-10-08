@@ -23,6 +23,30 @@ class PostService {
       }
     })
   }
+
+  static addOrUpdate (post) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let result
+        if (post._id) result = await axios.post(`${BASE_URL}api/update-post`, post)
+        else result = await axios.post(`${BASE_URL}api/add-post`, post)
+        resolve(result)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
+
+  static delete (post) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await axios.post(`${BASE_URL}api/delete-post`, post)
+        resolve(result)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
 }
 
 export default PostService

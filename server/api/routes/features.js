@@ -1,4 +1,5 @@
 const Feature = require('../../models/features')
+const checkAuth = require('../middleware/checkAuth')
 
 module.exports = (router) => {
   router.get('/features', (req, res, next) => {
@@ -25,7 +26,7 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/features', (req, res, next) => {
+  router.post('/features', checkAuth, (req, res, next) => {
     let feature = new Feature(req.body)
     feature.save((error, feature) => {
       if(error) return console.log(error)

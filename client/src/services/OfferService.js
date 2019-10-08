@@ -41,6 +41,29 @@ class OfferService {
       }
     })
   }
+
+  static updateOffer (offer) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await axios.post(`${BASE_URL}api/update-offer`, offer)
+        resolve(result)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
+
+  static updateLocal (local) {
+    console.log(local)
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await axios.post(`${BASE_URL}api/update-local`, local)
+        resolve(result)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
 }
 
 export default OfferService

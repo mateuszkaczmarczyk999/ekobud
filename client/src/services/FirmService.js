@@ -23,6 +23,17 @@ class FirmService {
       }
     })
   }
+
+  static updateFirm (info) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await axios.post(`${BASE_URL}api/update-firm-information`, info)
+        resolve(result)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
 }
 
 export default FirmService

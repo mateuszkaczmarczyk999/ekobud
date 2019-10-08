@@ -1,4 +1,5 @@
 const Local = require('../../models/locals')
+const checkAuth = require('../middleware/checkAuth')
 
 module.exports = (router) => {
   router.get('/locals', (req, res, next) => {
@@ -25,11 +26,26 @@ module.exports = (router) => {
     })
   })
 
-  router.post('/locals', (req, res, next) => {
+  router.post('/locals', checkAuth, (req, res, next) => {
     let local = new Local(req.body)
-    local.save((error, about) => {
+    local.save((error, local) => {
       if(error) return console.log(error)
       res.status(200).json(local)
+    })
+  })
+
+  router.post('/update-local', checkAuth, (req, res, next) => {
+    Local.findOne({ _id: req.body._id }, (err, doc) => {
+      if(err) return console.log(err)
+
+      doc.available = req.body.available
+      doc.price = req.body.price
+      doc.area = req.body.area
+
+      doc.save((error, local) => {
+        if(error) return console.log(error)
+        res.status(200).json(local)
+      })
     })
   })
 }
